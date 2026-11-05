@@ -11,6 +11,14 @@ export default mergeConfig(
       environment: 'jsdom',
       include: ['tests/**/*.spec.ts'],
       root: fileURLToPath(new URL('./', import.meta.url)),
+      // Type-level tests (*.test-d.ts) check that invalid content is rejected
+      // by TypeScript. vue-tsc is needed because the project imports .vue files.
+      typecheck: {
+        enabled: true,
+        checker: 'vue-tsc',
+        include: ['tests/**/*.test-d.ts'],
+        tsconfig: './tsconfig.vitest.json',
+      },
     },
   }),
 )
