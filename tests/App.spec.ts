@@ -12,6 +12,15 @@ describe('App', () => {
     expect(wrapper.html().indexOf('<h1')).toBeLessThan(wrapper.html().indexOf('<h2'))
   })
 
+  it('shows the sections in order: hero, "Our solution", products', () => {
+    const wrapper = mount(App)
+
+    expect(wrapper.findAll('h2').map((heading) => heading.text())).toEqual([
+      'Our solution',
+      'Our planned products',
+    ])
+  })
+
   it('has a single main landmark and a single main heading', () => {
     const wrapper = mount(App)
 
