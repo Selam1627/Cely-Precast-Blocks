@@ -65,8 +65,12 @@ A one-page company website for **Cely Precast Greener Blocks**, an early-stage s
 - Keep site text and data (products, roadmap, team) in typed files in `src/content/`, not hard-coded in templates. This makes the Spanish version (US-05) easier later.
 - Style with Tailwind utility classes. Don't add UI libraries or other dependencies without asking.
 - Mobile-first, responsive layout. Use semantic HTML and accessible markup: labelled form fields, alt text, keyboard navigation and enough color contrast.
-- Tests: Vitest + Vue Test Utils, in `src/components/__tests__/`, named `<Component>.spec.ts`.
-- Before a change is done, run lint, tests and the build (through Docker).
+- Tests: Vitest + Vue Test Utils, in `tests/`, named `<Component>.spec.ts`. Import app code through the `@/` alias (for example `@/App.vue`).
+- Project documentation goes in `docs/`.
+- Before a change is done, run all checks through Docker:
+  ```bash
+  docker compose run --rm app sh -c "npm run lint && npm run format:check && npm run test && npm run build"
+  ```
 
 ## User stories
 
