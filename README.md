@@ -9,7 +9,7 @@ The site gives architects, engineers, builders, real estate developers, investor
 ## What the site covers
 
 - **Hero and "Our solution":** lower-carbon precast blocks, made with recycled industrial materials and produced locally.
-- **Products:** the planned range, all marked *in development*: standard building blocks, solar panel ballast blocks, paving blocks, retaining wall and landscaping blocks, and kerbs and edging.
+- **Products:** the planned range, all marked _in development_: standard building blocks, solar panel ballast blocks, paving blocks, retaining wall and landscaping blocks, and kerbs and edging.
 - **For customers, investors and partners:** what we offer each group, our current stage and roadmap, and the team.
 - **Contact:** a form that opens a pre-filled email.
 
@@ -63,22 +63,22 @@ To run any other command, use `docker compose run --rm app <command>`.
 
 ### Scripts
 
-| Command              | What it does                          |
-| -------------------- | ------------------------------------- |
-| `npm run dev`        | Start the dev server on port 5173     |
-| `npm run build`      | Type-check and build to `dist/`       |
-| `npm run preview`    | Serve the production build locally    |
-| `npm run test`       | Run the Vitest tests                  |
-| `npm run lint`       | Run ESLint                            |
-| `npm run format`     | Format the code with Prettier         |
+| Command           | What it does                       |
+| ----------------- | ---------------------------------- |
+| `npm run dev`     | Start the dev server on port 5173  |
+| `npm run build`   | Type-check and build to `dist/`    |
+| `npm run preview` | Serve the production build locally |
+| `npm run test`    | Run the Vitest tests               |
+| `npm run lint`    | Run ESLint                         |
+| `npm run format`  | Format the code with Prettier      |
 
 ## Environment variables
 
 Configuration is read from environment variables. `.env.example` lists every variable and is checked into the repository. Your own `.env` is git-ignored and must never be committed.
 
-| Variable              | Purpose                                         |
-| --------------------- | ----------------------------------------------- |
-| `VITE_CONTACT_EMAIL`  | Address the contact form sends its email to     |
+| Variable             | Purpose                                     |
+| -------------------- | ------------------------------------------- |
+| `VITE_CONTACT_EMAIL` | Address the contact form sends its email to |
 
 Any variable that starts with `VITE_` ends up in the public JavaScript bundle. Never put secrets in one.
 
