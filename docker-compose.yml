@@ -9,8 +9,10 @@ services:
       # avoids mixing host and container binaries.
       - node_modules:/app/node_modules
     ports:
-      - '5173:5173' # dev server
-      - '4173:4173' # preview of the production build
+      # Host ports come from .env (DEV_PORT, PREVIEW_PORT) so they can be
+      # changed if another app already uses them.
+      - '${DEV_PORT:-5173}:5173' # dev server
+      - '${PREVIEW_PORT:-4173}:4173' # preview of the production build
     environment:
       # File change events from a Windows host don't reach the container,
       # so Vite polls for changes instead (see vite.config.ts).
