@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import App from '@/App.vue'
 import { hero } from '@/content/hero'
+import { products } from '@/content/products'
 import { solution } from '@/content/solution'
 
 const allTexts = [
@@ -11,6 +12,9 @@ const allTexts = [
   ...hero.actions.map((action) => action.label),
   solution.heading,
   ...solution.benefits.flatMap((benefit) => [benefit.title, benefit.description]),
+  products.heading,
+  products.statusLabel,
+  ...products.items.flatMap((product) => [product.id, product.name, product.description]),
 ]
 
 describe('site content', () => {
@@ -25,6 +29,20 @@ describe('site content', () => {
         'Recycled industrial materials',
         'Local production',
       ])
+    })
+
+    it('products are exactly the five from the acceptance criteria', () => {
+      expect(products.items.map((product) => product.name)).toEqual([
+        'Standard building blocks',
+        'Solar panel ballast blocks',
+        'Paving blocks',
+        'Retaining wall and landscaping blocks',
+        'Kerbs and edging',
+      ])
+    })
+
+    it('labels the products "In development"', () => {
+      expect(products.statusLabel).toBe('In development')
     })
   })
 
@@ -55,6 +73,26 @@ describe('site content', () => {
       expect(new Set(titles).size).toBe(titles.length)
     })
 
+    it('has unique product ids, names and icons', () => {
+      for (const field of ['id', 'name', 'icon'] as const) {
+        const values = products.items.map((product) => product[field])
+        expect(new Set(values).size).toBe(values.length)
+      }
+    })
+
+    it('uses lowercase, hyphenated product ids', () => {
+      for (const product of products.items) {
+        expect(product.id).toMatch(/^[a-z][a-z0-9-]*$/)
+      }
+    })
+
+    it('keeps product descriptions to one short sentence', () => {
+      for (const product of products.items) {
+        expect(product.description).toMatch(/^[A-Z][^.]*\.$/)
+        expect(product.description.length).toBeLessThanOrEqual(120)
+      }
+    })
+
     it('keeps the tagline to one short line', () => {
       expect(hero.tagline.length).toBeLessThanOrEqual(80)
       expect(hero.tagline).not.toContain('\n')
@@ -79,6 +117,25 @@ describe('site content', () => {
 
       for (const word of forbiddenWords) {
         expect(pageText).not.toContain(word)
+      }
+    })
+
+    it('gives no technical specifications for products', () => {
+      // Generic spec words only; any number is already caught by the next test.
+      const specWords = [
+        'strength',
+        'density',
+        'dimension',
+        'weight',
+        'thickness',
+        'compressive',
+        'load rating',
+        'specification',
+      ]
+      const productText = mount(App).get('#products').text().toLowerCase()
+
+      for (const word of specWords) {
+        expect(productText).not.toContain(word)
       }
     })
 
