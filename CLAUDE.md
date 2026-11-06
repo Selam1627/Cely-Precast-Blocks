@@ -86,3 +86,5 @@ A one-page company website for **CelyMary Greener Precast Blocks**, an early-sta
 - **US-05 — Spanish version.**
 - **US-06 — News and milestones.**
 - **US-07 — Carbon savings calculator.** Do not build it without real, user-provided figures (see Honesty).
+- **US-08 — Separate pages.**
+- **US-09 — Form backend.**
