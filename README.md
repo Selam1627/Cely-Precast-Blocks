@@ -4,7 +4,7 @@ A one-page website for **CelyMary Greener Precast Blocks**, an early-stage start
 
 The site gives architects, engineers, builders, real estate developers, investors and collaboration partners one place to see what the company offers and to get in touch.
 
-> **Status:** the project skeleton and development environment are ready. The page sections are not built yet.
+> **Status:** all MVP sections (US-01 to US-04) are built.
 
 ## What the site covers
 
@@ -107,6 +107,7 @@ Any variable that starts with `VITE_` ends up in the public JavaScript bundle. N
 │   │   ├── sections/          # One component per page section
 │   │   └── ui/                # Small reusable pieces (buttons, cards…)
 │   ├── content/               # Site text and data (products, roadmap, team)
+│   ├── utils/                 # Plain TypeScript helpers (contact form rules)
 │   ├── App.vue                # Page layout: puts the sections in order
 │   ├── env.d.ts               # Types for environment variables
 │   ├── main.ts                # App entry point
