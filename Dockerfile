@@ -1,4 +1,4 @@
-# Development image for the Cely Precast Greener Blocks website.
+# Development image for the CelyMary Greener Precast Blocks website.
 # The project folder is mounted at /app by docker compose; this image only
 # provides the toolchain (Node.js, npm, git).
 FROM node:24-bookworm

@@ -22,7 +22,7 @@ describe('HeroSection', () => {
     it('shows the company name as the main heading', () => {
       const wrapper = mount(HeroSection)
 
-      expect(wrapper.get('h1').text()).toBe('Cely Precast Greener Blocks')
+      expect(wrapper.get('h1').text()).toBe('CelyMary Greener Precast Blocks')
     })
 
     it('shows the tagline from the content file', () => {

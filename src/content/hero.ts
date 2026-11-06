@@ -12,7 +12,7 @@ export interface HeroContent {
 }
 
 export const hero: HeroContent = {
-  companyName: 'Cely Precast Greener Blocks',
+  companyName: 'CelyMary Greener Precast Blocks',
   tagline: 'Greener precast blocks for lower-carbon buildings.',
   actions: [
     { label: 'Work with us', href: '#work-with-us' },
