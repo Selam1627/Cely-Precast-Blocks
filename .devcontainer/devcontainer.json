@@ -1,0 +1,30 @@
+{
+  "name": "Cely Precast Blocks",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "remoteUser": "node",
+  // Keep the container running without starting the dev server; run
+  // `npm run dev` yourself from the container terminal.
+  "overrideCommand": true,
+  "postCreateCommand": "git config --global --add safe.directory /app && npm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "files.eol": "\n"
+      }
+    }
+  }
+}

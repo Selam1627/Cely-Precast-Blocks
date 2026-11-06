@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@layer base {
+  /* Smooth scrolling for the hero buttons' in-page links, except for users
+     who have asked their device to reduce motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
