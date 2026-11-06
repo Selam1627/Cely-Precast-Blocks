@@ -2,9 +2,12 @@ import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 
 import App from '@/App.vue'
+import { audiences } from '@/content/audiences'
 import { hero } from '@/content/hero'
 import { products } from '@/content/products'
+import { roadmap } from '@/content/roadmap'
 import { solution } from '@/content/solution'
+import { team } from '@/content/team'
 
 const allTexts = [
   hero.companyName,
@@ -15,6 +18,18 @@ const allTexts = [
   products.heading,
   products.statusLabel,
   ...products.items.flatMap((product) => [product.id, product.name, product.description]),
+  audiences.heading,
+  ...audiences.items.flatMap((audience) => [audience.id, audience.title, audience.description]),
+  roadmap.heading,
+  roadmap.statement,
+  ...roadmap.steps.flatMap((step) => [
+    step.id,
+    step.title,
+    ...(step.statusLabel === undefined ? [] : [step.statusLabel]),
+    ...(step.note === undefined ? [] : [step.note]),
+  ]),
+  team.heading,
+  ...team.members.flatMap((member) => [member.name, member.role, member.bio]),
 ]
 
 describe('site content', () => {
@@ -91,6 +106,22 @@ describe('site content', () => {
         expect(product.description).toMatch(/^[A-Z][^.]*\.$/)
         expect(product.description.length).toBeLessThanOrEqual(120)
       }
+    })
+
+    it('has unique audience ids, roadmap step ids and team member names', () => {
+      for (const values of [
+        audiences.items.map((audience) => audience.id),
+        roadmap.steps.map((step) => step.id),
+        team.members.map((member) => member.name),
+      ]) {
+        expect(new Set(values).size).toBe(values.length)
+      }
+    })
+
+    it('marks exactly one roadmap step as the current stage', () => {
+      const current = roadmap.steps.filter((step) => step.statusLabel === 'Current stage')
+
+      expect(current.map((step) => step.title)).toEqual(['Concept and planning'])
     })
 
     it('keeps the tagline to one short line', () => {

@@ -5,8 +5,11 @@
  */
 import { describe, expectTypeOf, it } from 'vitest'
 
+import type { Audience } from '@/content/audiences'
 import { hero, type HeroAction, type HeroContent } from '@/content/hero'
 import { products, type Product } from '@/content/products'
+import type { RoadmapContent, RoadmapStep } from '@/content/roadmap'
+import { team, type TeamMember } from '@/content/team'
 import { solution, type Benefit, type SolutionContent } from '@/content/solution'
 
 describe('content types: expected errors', () => {
@@ -66,6 +69,43 @@ describe('content types: expected errors', () => {
     const product: Product = { id: 'test', name: 'Test block', icon: 'paving' }
 
     expectTypeOf(product).toEqualTypeOf<Product>()
+  })
+
+  it('rejects an audience without a description', () => {
+    // @ts-expect-error: description is required
+    const audience: Audience = { id: 'test', title: 'For test' }
+
+    expectTypeOf(audience).toEqualTypeOf<Audience>()
+  })
+
+  it('rejects a roadmap without steps', () => {
+    // @ts-expect-error: steps is required
+    const content: RoadmapContent = { heading: 'Test', statement: 'Test.' }
+
+    expectTypeOf(content).toEqualTypeOf<RoadmapContent>()
+  })
+
+  it('rejects a roadmap step without a title, but allows no label or note', () => {
+    // @ts-expect-error: title is required
+    const invalid: RoadmapStep = { id: 'test' }
+    const minimal: RoadmapStep = { id: 'test', title: 'Test step' }
+
+    expectTypeOf(invalid).toEqualTypeOf<RoadmapStep>()
+    expectTypeOf(minimal).toEqualTypeOf<RoadmapStep>()
+  })
+
+  it('rejects a team member without a bio', () => {
+    // @ts-expect-error: bio is required
+    const member: TeamMember = { name: 'Test name', role: 'Test role' }
+
+    expectTypeOf(member).toEqualTypeOf<TeamMember>()
+  })
+
+  it('does not allow adding team members from code at runtime', () => {
+    // @ts-expect-error: members is read-only
+    team.members.push({ name: 'X', role: 'X', bio: 'X.' })
+
+    expectTypeOf(team.members).toEqualTypeOf<readonly TeamMember[]>()
   })
 
   it('does not allow adding products from code at runtime', () => {
