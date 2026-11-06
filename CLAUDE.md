@@ -17,7 +17,7 @@ A one-page company website for **CelyMary Greener Precast Blocks**, an early-sta
 - Vitest for tests
 - ESLint + Prettier
 - DevContainer with Docker / docker compose
-- Vercel: static build to `dist/`, with an SPA fallback rewrite to `index.html` in `vercel.json`
+- Vercel: static build to `dist/`, configured in `vercel.json`. No SPA fallback: the site has one page and no router, so unknown paths return a 404
 
 ## Working rules
 
