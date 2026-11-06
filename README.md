@@ -4,24 +4,106 @@ A one-page website for **CelyMary Greener Precast Blocks**, an early-stage start
 
 The site gives architects, engineers, builders, real estate developers, investors and collaboration partners one place to see what the company offers and to get in touch.
 
-> **Status:** all MVP sections (US-01 to US-04) are built.
+## 1. The idea
 
-## What the site covers
+**The problem:** CelyMary Greener Precast Blocks is an early-stage company, and the people who might work with it have no single place to learn what it offers or how to get in touch.
 
-- **Hero and "Our solution":** lower-carbon precast blocks, made with recycled industrial materials and produced locally.
-- **Products:** the planned range, all marked _in development_: standard building blocks, solar panel ballast blocks, paving blocks, retaining wall and landscaping blocks, and kerbs and edging.
-- **For customers, investors and partners:** what we offer each group, our current stage and roadmap, and the team.
-- **Contact:** a form that opens a pre-filled email.
+**Who it is for:** architects, engineers, builders, real estate developers, potential investors and collaboration partners.
 
-## Tech stack
+**The minimum moment of value:** in one visit, someone understands what the company plans to make and what stage it is at, then sends it a message.
 
-- [Vue 3](https://vuejs.org/) + TypeScript
-- [Vite](https://vite.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Vitest](https://vitest.dev/) for tests
-- ESLint + Prettier
-- DevContainer with Docker / docker compose
-- Hosted on [Vercel](https://vercel.com/) as a static build
+## 2. The requirements
+
+### MVP
+
+| Story | What it covers                                                                         |
+| ----- | -------------------------------------------------------------------------------------- |
+| US-01 | Hero and "Our solution": lower carbon, recycled industrial materials, local production |
+| US-02 | Products: the planned range, each labelled "in development", with no technical specs   |
+| US-03 | For customers, investors and partners; current stage and roadmap; team                 |
+| US-04 | Contact form that opens a pre-filled email                                             |
+
+### Backlog
+
+| Story | What it covers                                    |
+| ----- | ------------------------------------------------- |
+| US-05 | Spanish version                                   |
+| US-06 | News and milestones                               |
+| US-07 | Carbon savings calculator, only with real figures |
+| US-08 | Separate pages                                    |
+| US-09 | Form backend                                      |
+
+### Why this is the smallest useful site
+
+Each MVP story answers a question a visitor needs answered: what is this, what will you make, what does it mean for me and who is behind it, and how do I reach you? Without any one of them, the visit can't end in an informed message. The backlog adds reach, depth or convenience, but the site works without it.
+
+## 3. What I built
+
+**Live site:** <https://celymary-precast-blocks.vercel.app>
+
+- **Hero:** the company name, tagline and buttons that lead to "Work with us" and "Contact".
+- **Our solution:** the three benefits.
+- **Products:** five planned product types with icons, all marked "In development".
+- **Work with us:** what the company offers customers, investors and partners.
+- **Roadmap:** the current concept stage and the next steps, without invented dates.
+- **Team:** the founder and co-founder.
+- **Contact:** a validated form that opens a pre-filled email, plus a direct email link.
+
+**Stack:** Vue 3, TypeScript, Vite, Tailwind CSS, Vitest, ESLint, Prettier, a Docker DevContainer, and Vercel for hosting.
+
+**Tests:** 158 tests in 12 files, covering normal cases, edge cases and expected errors.
+
+**Releases** (merge commits on `main`):
+
+| Version | Commit    | What changed                                                         |
+| ------- | --------- | -------------------------------------------------------------------- |
+| v0.1.0  | `58d858c` | MVP                                                                  |
+| v0.1.1  | `55ae23b` | Routing fix: unknown paths now return a 404 instead of the home page |
+
+## 4. The process with AI
+
+I built this with Claude Code as the agent, following the course workflow:
+
+| Step                 | What I did                                                                                       | What the agent did                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| Repository           | Created the GitHub repository                                                                    | Renamed a mistaken branch and set up the project                                          |
+| `CLAUDE.md`          | Set the rules and reviewed the file                                                              | Drafted it                                                                                |
+| Feature branches     | Named each branch and wrote the acceptance criteria                                              | Created the branches and built the features                                               |
+| Plan first           | Approved or changed each plan                                                                    | Proposed the plan before coding                                                           |
+| Tests                | Asked for normal, edge and error cases, and said not to change a test just to make it pass       | Wrote and ran the tests                                                                   |
+| Browser check        | Checked each feature in the browser and asked for changes, such as redrawing two icons           | Made the changes; it could not see the rendered page                                      |
+| Merge into `develop` | Validated the work and approved the commands                                                     | Showed the commands, ran them and reported conflicts                                      |
+| Release into `main`  | Ran the v0.1.0 merge; gave each v0.1.1 merge command and pushed it                               | Audited `develop` and wrote the commands; ran my v0.1.1 merge commands                    |
+| Deploy on Vercel     | Set up the project and its environment variable                                                  | Prepared `vercel.json`                                                                    |
+| Validation           | Tested the routing fix on the protected preview and the form's email step on my phone and laptop | Compared production with a local build, found the routing problem and wrote the checklist |
+
+**The most interesting prompt (3.2):** this was the project brief, and it set these rules before any code existed:
+
+> Confidentiality: the repository is public. Never describe the block materials, recipes, formulations or production process anywhere (code, docs, commits). The website only describes benefits: lower carbon, recycled industrial materials, local production.
+>
+> Honesty: the company is early-stage. No invented statistics, fake testimonials or partner logos.
+
+These rules shaped later work: products have no technical specs, the roadmap has no invented dates, and the calculator waits for real figures. The same prompt also asked for an SPA fallback, which turned out to be the cause of the routing bug fixed in v0.1.1. A brief guides the agent, including where the brief is wrong.
+
+## 5. Reflection
+
+**How far I got:** the MVP is live, with one follow-up release. The backlog hasn't been started. The company is still at the concept stage, and every product is in development.
+
+**Known limits:**
+
+- The form needs an email app on the visitor's device, because there is no backend. On my phone, the email app opened with the fields filled in and the message arrived. It first went to spam, so I added a Gmail filter. On my laptop nothing opened, because no email app is set up there.
+
+**What I would do differently:**
+
+- Check whether the site needs a routing fallback before asking for one.
+- Create Git tags and update the `package.json` version with each release, which still says 0.0.0.
+- Set up a private commit email before the first commit.
+
+**Next steps:**
+
+1. Test the form's email step on a desktop with an email app installed.
+2. Add a favicon and `robots.txt`.
+3. Work through the backlog, adding the calculator only once real figures exist.
 
 ## Getting started
 
