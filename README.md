@@ -117,7 +117,7 @@ Any variable that starts with `VITE_` ends up in the public JavaScript bundle. N
 ├── docker-compose.yml         # Dev container service "app"
 ├── Dockerfile                 # Dev image (Node.js 24)
 ├── index.html
-├── vercel.json                # Vercel build settings and SPA fallback
+├── vercel.json                # Vercel build settings
 ├── vite.config.ts
 ├── vitest.config.ts
 ├── tsconfig*.json             # TypeScript configs (app, node, vitest)
@@ -129,7 +129,7 @@ Any variable that starts with `VITE_` ends up in the public JavaScript bundle. N
 
 ## Deployment
 
-Vercel builds the site with `npm run build` and serves the static files from `dist/`. In `vercel.json`, a rewrite sends every route to `index.html` (SPA fallback). Set the environment variables in the Vercel project settings.
+Vercel builds the site with `npm run build` and serves the static files from `dist/`. The site has one page and no router, so unknown paths return a 404. Set the environment variables in the Vercel project settings.
 
 ## Contributing
 
