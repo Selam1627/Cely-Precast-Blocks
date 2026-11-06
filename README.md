@@ -1,20 +1,18 @@
 # CelyMary Greener Precast Blocks — Website
 
-A one-page website for **CelyMary Greener Precast Blocks**, an early-stage startup making precast blocks with a much lower carbon footprint than conventional concrete blocks.
+## What it is
 
-The site gives architects, engineers, builders, real estate developers, investors and collaboration partners one place to see what the company offers and to get in touch.
+CelyMary Greener Precast Blocks is an early-stage company planning lower-carbon building blocks, and this one-page website shows what it wants to make and how to contact it.
 
-## 1. The idea
-
-**The problem:** CelyMary Greener Precast Blocks is an early-stage company, and the people who might work with it have no single place to learn what it offers or how to get in touch.
+**The problem:** the people who might work with the company have no single place to learn what it offers or how to reach it.
 
 **Who it is for:** architects, engineers, builders, real estate developers, potential investors and collaboration partners.
 
 **The minimum moment of value:** in one visit, someone understands what the company plans to make and what stage it is at, then sends it a message.
 
-## 2. The requirements
+## Features
 
-### MVP
+### MVP user stories
 
 | Story | What it covers                                                                         |
 | ----- | -------------------------------------------------------------------------------------- |
@@ -22,6 +20,18 @@ The site gives architects, engineers, builders, real estate developers, investor
 | US-02 | Products: the planned range, each labelled "in development", with no technical specs   |
 | US-03 | For customers, investors and partners; current stage and roadmap; team                 |
 | US-04 | Contact form that opens a pre-filled email                                             |
+
+Each MVP story answers a question a visitor needs answered: what is this, what will you make, what does it mean for me and who is behind it, and how do I reach you? Without any one of them, the visit can't end in an informed message. The backlog adds reach, depth or convenience, but the site works without it.
+
+### What the live site has
+
+- **Hero:** the company name, tagline and buttons that lead to "Work with us" and "Contact".
+- **Our solution:** the three benefits.
+- **Products:** five planned product types with icons, all marked "In development".
+- **Work with us:** what the company offers customers, investors and partners.
+- **Roadmap:** the current concept stage and the next steps, without invented dates.
+- **Team:** the founder and co-founder.
+- **Contact:** a validated form that opens a pre-filled email, plus a direct email link.
 
 ### Backlog
 
@@ -33,79 +43,9 @@ The site gives architects, engineers, builders, real estate developers, investor
 | US-08 | Separate pages                                    |
 | US-09 | Form backend                                      |
 
-### Why this is the smallest useful site
-
-Each MVP story answers a question a visitor needs answered: what is this, what will you make, what does it mean for me and who is behind it, and how do I reach you? Without any one of them, the visit can't end in an informed message. The backlog adds reach, depth or convenience, but the site works without it.
-
-## 3. What I built
+## How to run it
 
 **Live site:** <https://celymary-precast-blocks.vercel.app>
-
-- **Hero:** the company name, tagline and buttons that lead to "Work with us" and "Contact".
-- **Our solution:** the three benefits.
-- **Products:** five planned product types with icons, all marked "In development".
-- **Work with us:** what the company offers customers, investors and partners.
-- **Roadmap:** the current concept stage and the next steps, without invented dates.
-- **Team:** the founder and co-founder.
-- **Contact:** a validated form that opens a pre-filled email, plus a direct email link.
-
-**Stack:** Vue 3, TypeScript, Vite, Tailwind CSS, Vitest, ESLint, Prettier, a Docker DevContainer, and Vercel for hosting.
-
-**Tests:** 158 tests in 12 files, covering normal cases, edge cases and expected errors.
-
-**Releases** (merge commits on `main`):
-
-| Version | Commit    | What changed                                                         |
-| ------- | --------- | -------------------------------------------------------------------- |
-| v0.1.0  | `58d858c` | MVP                                                                  |
-| v0.1.1  | `55ae23b` | Routing fix: unknown paths now return a 404 instead of the home page |
-
-## 4. The process with AI
-
-I built this with Claude Code as the agent, following the course workflow:
-
-| Step                 | What I did                                                                                       | What the agent did                                                                        |
-| -------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| Repository           | Created the GitHub repository                                                                    | Renamed a mistaken branch and set up the project                                          |
-| `CLAUDE.md`          | Set the rules and reviewed the file                                                              | Drafted it                                                                                |
-| Feature branches     | Named each branch and wrote the acceptance criteria                                              | Created the branches and built the features                                               |
-| Plan first           | Approved or changed each plan                                                                    | Proposed the plan before coding                                                           |
-| Tests                | Asked for normal, edge and error cases, and said not to change a test just to make it pass       | Wrote and ran the tests                                                                   |
-| Browser check        | Checked each feature in the browser and asked for changes, such as redrawing two icons           | Made the changes; it could not see the rendered page                                      |
-| Merge into `develop` | Validated the work and approved the commands                                                     | Showed the commands, ran them and reported conflicts                                      |
-| Release into `main`  | Ran the v0.1.0 merge; gave each v0.1.1 merge command and pushed it                               | Audited `develop` and wrote the commands; ran my v0.1.1 merge commands                    |
-| Deploy on Vercel     | Set up the project and its environment variable                                                  | Prepared `vercel.json`                                                                    |
-| Validation           | Tested the routing fix on the protected preview and the form's email step on my phone and laptop | Compared production with a local build, found the routing problem and wrote the checklist |
-
-**The most interesting prompt (3.2):** this was the project brief, and it set these rules before any code existed:
-
-> Confidentiality: the repository is public. Never describe the block materials, recipes, formulations or production process anywhere (code, docs, commits). The website only describes benefits: lower carbon, recycled industrial materials, local production.
->
-> Honesty: the company is early-stage. No invented statistics, fake testimonials or partner logos.
-
-These rules shaped later work: products have no technical specs, the roadmap has no invented dates, and the calculator waits for real figures. The same prompt also asked for an SPA fallback, which turned out to be the cause of the routing bug fixed in v0.1.1. A brief guides the agent, including where the brief is wrong.
-
-## 5. Reflection
-
-**How far I got:** the MVP is live, with one follow-up release. The backlog hasn't been started. The company is still at the concept stage, and every product is in development.
-
-**Known limits:**
-
-- The form needs an email app on the visitor's device, because there is no backend. On my phone, the email app opened with the fields filled in and the message arrived. It first went to spam, so I added a Gmail filter. On my laptop nothing opened, because no email app is set up there.
-
-**What I would do differently:**
-
-- Check whether the site needs a routing fallback before asking for one.
-- Create Git tags and update the `package.json` version with each release, which still says 0.0.0.
-- Set up a private commit email before the first commit.
-
-**Next steps:**
-
-1. Test the form's email step on a desktop with an email app installed.
-2. Add a favicon and `robots.txt`.
-3. Work through the backlog, adding the calculator only once real figures exist.
-
-## Getting started
 
 ### Requirements
 
@@ -114,7 +54,23 @@ These rules shaped later work: products have no technical specs, the roadmap has
 
 You don't need Node.js on your machine. Everything runs inside the container.
 
-### Option A: VS Code DevContainer (recommended)
+### Environment variables
+
+Configuration is read from environment variables. `.env.example` lists every variable and is checked into the repository. Your own `.env` is git-ignored and must never be committed.
+
+| Variable             | Purpose                                                     |
+| -------------------- | ----------------------------------------------------------- |
+| `VITE_CONTACT_EMAIL` | Address the contact form sends its email to                 |
+| `DEV_PORT`           | Port on your computer for the dev server (default 5173)     |
+| `PREVIEW_PORT`       | Port on your computer for the preview server (default 4173) |
+
+`DEV_PORT` and `PREVIEW_PORT` are only read by docker compose, not by the website.
+
+Any variable that starts with `VITE_` ends up in the public JavaScript bundle. Never put secrets in one.
+
+### Start with Docker
+
+#### Option A: VS Code DevContainer (recommended)
 
 1. Clone the repository:
    ```bash
@@ -132,7 +88,7 @@ You don't need Node.js on your machine. Everything runs inside the container.
    ```
 5. Open <http://localhost:5173>.
 
-### Option B: docker compose only
+#### Option B: docker compose only
 
 ```bash
 cp .env.example .env
@@ -144,7 +100,21 @@ Then open <http://localhost:5173>. Stop the server with `Ctrl+C`.
 
 If another app already uses port 5173, set `DEV_PORT` in `.env` (for example `DEV_PORT=5180`) and open that port instead.
 
-To run any other command, use `docker compose run --rm app <command>`, for example `docker compose run --rm app npm run test`.
+To run any other command, use `docker compose run --rm app <command>`.
+
+### Run the tests
+
+In the DevContainer terminal:
+
+```bash
+npm run test
+```
+
+With docker compose only:
+
+```bash
+docker compose run --rm app npm run test
+```
 
 ### Scripts
 
@@ -161,21 +131,7 @@ To run any other command, use `docker compose run --rm app <command>`, for examp
 | `npm run format`       | Format all files with Prettier          |
 | `npm run format:check` | Check formatting without changing files |
 
-## Environment variables
-
-Configuration is read from environment variables. `.env.example` lists every variable and is checked into the repository. Your own `.env` is git-ignored and must never be committed.
-
-| Variable             | Purpose                                                     |
-| -------------------- | ----------------------------------------------------------- |
-| `VITE_CONTACT_EMAIL` | Address the contact form sends its email to                 |
-| `DEV_PORT`           | Port on your computer for the dev server (default 5173)     |
-| `PREVIEW_PORT`       | Port on your computer for the preview server (default 4173) |
-
-`DEV_PORT` and `PREVIEW_PORT` are only read by docker compose, not by the website.
-
-Any variable that starts with `VITE_` ends up in the public JavaScript bundle. Never put secrets in one.
-
-## Folder structure
+### Folder structure
 
 ```
 .
@@ -209,14 +165,112 @@ Any variable that starts with `VITE_` ends up in the public JavaScript bundle. N
 └── README.md
 ```
 
-## Deployment
+### Deployment
 
 Vercel builds the site with `npm run build` and serves the static files from `dist/`. The site has one page and no router, so unknown paths return a 404. Set the environment variables in the Vercel project settings.
 
-## Contributing
+### Contributing
 
 - `main` is production and `develop` is integration.
 - Create each feature in a `feature/<name>` branch from `develop`.
 - Once a feature is validated, merge it into `develop` with `git merge --no-ff feature/<name>` and push `develop`. No pull request is needed.
 - Never commit directly to `main`.
 - Write commit messages in the [Conventional Commits](https://www.conventionalcommits.org/) format (`feat`, `fix`, `docs`, `refactor`, `test`, `chore`).
+
+## How it was built with AI
+
+**The agent:** Claude Code in VS Code only, with no extra skills.
+
+**Stack:** Vue 3, TypeScript, Vite, Tailwind CSS, Vitest, ESLint, Prettier, a Docker DevContainer, and Vercel for hosting.
+
+### The cycle with the agent
+
+| Step                 | What I did                                                                                       | What the agent did                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| Repository           | Created the GitHub repository                                                                    | Renamed a mistaken branch and set up the project                                          |
+| `CLAUDE.md`          | Set the rules and reviewed the file                                                              | Drafted it                                                                                |
+| Feature branches     | Named each branch and wrote the acceptance criteria                                              | Created the branches and built the features                                               |
+| Plan first           | Approved or changed each plan                                                                    | Proposed the plan before coding                                                           |
+| Tests                | Asked for normal, edge and error cases, and said not to change a test just to make it pass       | Wrote and ran the tests                                                                   |
+| Browser check        | Checked each feature in the browser and asked for changes, such as redrawing two icons           | Made the changes; it could not see the rendered page                                      |
+| Merge into `develop` | Validated the work and approved the commands                                                     | Showed the commands, ran them and reported conflicts                                      |
+| Release into `main`  | Ran the v0.1.0 merge; gave each v0.1.1 merge command and pushed it                               | Audited `develop` and wrote the commands; ran my v0.1.1 merge commands                    |
+| Deploy on Vercel     | Set up the project and its environment variable                                                  | Prepared `vercel.json`                                                                    |
+| Validation           | Tested the routing fix on the protected preview and the form's email step on my phone and laptop | Compared production with a local build, found the routing problem and wrote the checklist |
+
+### CLAUDE.md
+
+`CLAUDE.md` holds the project description, stack, working rules, conventions and user stories, so the agent follows the same rules in every session. The rules cover the Git workflow, commit format, running commands through Docker, secrets, confidentiality and honesty.
+
+### The real prompt 3.2
+
+This was the project brief, which set the confidentiality and honesty rules before any code existed. It uses the company's earlier name:
+
+```text
+We are starting a new project in this folder. The project is: a one-page company website for "Cely Precast Greener Blocks", an early-stage startup that makes precast blocks with a much lower carbon footprint than conventional concrete blocks. It is for architects, engineers, builders, real estate developers, potential investors and collaboration partners, and it solves the problem that they have no single place to learn what the company offers and get in touch.
+
+Stack: Vue 3 + TypeScript + Vite + Tailwind CSS, Vitest for tests, ESLint + Prettier. Development in a DevContainer with Docker / docker compose. Deployed on Vercel (static build to dist/, with SPA fallback).
+
+Create:
+1. A README.md with the project description, how to run it, and the folder structure.
+2. A CLAUDE.md with the description, the stack, the conventions, and these working rules:
+- Git workflow: main is production and develop is integration; each feature goes in a feature/<name> branch created from develop. Never commit directly to main.
+- Commits use the Conventional Commits format (feat, fix, docs, refactor, test, chore).
+- The development environment is a DevContainer; all commands run through Docker.
+- Never write secrets in the code: environment variables, .env in .gitignore, and a versioned .env.example.
+- Confidentiality: the repository is public. Never describe the block materials, recipes, formulations or production process anywhere (code, docs, commits). The website only describes benefits: lower carbon, recycled industrial materials, local production.
+- Honesty: the company is early-stage. No invented statistics, fake testimonials or partner logos.
+- User stories. MVP: US-01 Hero and "Our solution"; US-02 Products (planned range: standard building blocks, solar panel ballast blocks, paving blocks, retaining wall and landscaping blocks, kerbs and edging, labeled "in development", no technical specs); US-03 For customers / investors / partners, stage and roadmap, team; US-04 Contact form (name, email, visitor type, product of interest, message; opens an email). Backlog: US-05 Spanish version; US-06 News and milestones; US-07 Carbon savings calculator.
+
+Don't write any application code yet. Show me both files before committing. Then commit them to develop and push develop.
+```
+
+These rules shaped later work: products have no technical specs, the roadmap has no invented dates, and the calculator waits for real figures. The same prompt also asked for an SPA fallback, which turned out to be the cause of the routing bug fixed in v0.1.1. A brief guides the agent, including where the brief is wrong.
+
+### What went well
+
+- Seeing a plan before any code let me change the text and scope early.
+- The tests covered normal cases, edge cases and expected errors, and all 158 pass.
+- The check before the first release found no secrets in the Git history and no material or process details in the repository.
+- The agent's review of the live site found the routing bug, and I tested the fix on a preview before releasing it.
+
+### What was hard
+
+- **Docker and WSL on Windows:** Docker Desktop could not start because the Virtual Machine Platform was not enabled in Windows. I enabled the Windows features and installed a pending Windows update, and after a restart it worked.
+- **Port 5173 already in use:** another project's container was using it, so the host ports became configurable with `DEV_PORT` and `PREVIEW_PORT`.
+- **Email link on my laptop:** nothing opened, because no email app is set up there.
+- **First email in spam:** the test message first went to spam, so I added a Gmail filter.
+- **Vercel and the repository:** Vercel didn't see the repository at first, because its GitHub app had no access to it. I gave it access in the GitHub settings.
+- **Routing bug:** every missing path returned the home page with a 200 status. Removing the catch-all rewrite fixed it in v0.1.1.
+
+## Status and next steps
+
+**How far I got:** the MVP is live, with one follow-up release. The backlog hasn't been started. The company is still at the concept stage, and every product is in development.
+
+**Releases** (merge commits on `main`):
+
+| Version | Commit    | What changed                                                         |
+| ------- | --------- | -------------------------------------------------------------------- |
+| v0.1.0  | `58d858c` | MVP                                                                  |
+| v0.1.1  | `55ae23b` | Routing fix: unknown paths now return a 404 instead of the home page |
+
+**What works:**
+
+- The live site has all the MVP sections, and unknown paths return a 404.
+- On my phone, the form opened the email app with the fields filled in, and the message arrived.
+- All 158 tests in 12 files pass.
+
+**What doesn't work:**
+
+- The form needs an email app on the visitor's device, because there is no backend. On my laptop, which has no email app set up, nothing opened.
+- A message can land in spam, as the first one did.
+- The site has no favicon or `robots.txt`.
+
+**The natural next step:** build US-09 (form backend), so visitors don't need an email app.
+
+After that:
+
+1. Test the form's email step on a desktop with an email app installed.
+2. Add a favicon and `robots.txt`.
+3. Add Git tags at the next release, and update the `package.json` version, which still says 0.0.0.
+4. Work through the rest of the backlog, adding the calculator only once real figures exist.
