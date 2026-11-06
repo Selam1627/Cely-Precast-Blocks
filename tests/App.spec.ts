@@ -21,6 +21,7 @@ describe('App', () => {
       'Work with us',
       'Stage and roadmap',
       'Team',
+      'Contact us',
     ])
   })
 
@@ -39,12 +40,12 @@ describe('App', () => {
     expect(wrapper.findAll('h1')).toHaveLength(1)
   })
 
-  // Expected to fail until US-04 adds #contact. Once it exists, Vitest will report
-  // this test as failing because it passes: then change `it.fails` to `it`.
-  it.fails('every hero button points to a section that exists on the page', () => {
+  it('every hero button points to a section that exists on the page', () => {
     const wrapper = mount(App)
+    const links = wrapper.findAll('section a[href^="#"]')
 
-    for (const link of wrapper.findAll('section a[href^="#"]')) {
+    expect(links.map((link) => link.text())).toEqual(['Work with us', 'Contact'])
+    for (const link of links) {
       const targetId = link.attributes('href')!.slice(1)
       expect(wrapper.find(`[id="${targetId}"]`).exists()).toBe(true)
     }
