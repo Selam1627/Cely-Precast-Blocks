@@ -4,7 +4,7 @@ Guidance for Claude Code when working in this repository.
 
 ## Project
 
-A one-page company website for **Cely Precast Greener Blocks**, an early-stage startup making precast blocks with a much lower carbon footprint than conventional concrete blocks.
+A one-page company website for **CelyMary Greener Precast Blocks**, an early-stage startup making precast blocks with a much lower carbon footprint than conventional concrete blocks.
 
 - **Audience:** architects, engineers, builders, real estate developers, potential investors and collaboration partners.
 - **Problem it solves:** these people have no single place to learn what the company offers and get in touch.

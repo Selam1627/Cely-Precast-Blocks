@@ -33,7 +33,7 @@ describe('content types: expected errors', () => {
 
   it('rejects hero content without a tagline', () => {
     // @ts-expect-error: tagline is required
-    const content: HeroContent = { companyName: 'Cely Precast Greener Blocks', actions: [] }
+    const content: HeroContent = { companyName: 'CelyMary Greener Precast Blocks', actions: [] }
 
     expectTypeOf(content).toEqualTypeOf<HeroContent>()
   })

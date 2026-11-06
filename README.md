@@ -1,6 +1,6 @@
-# Cely Precast Greener Blocks — Website
+# CelyMary Greener Precast Blocks — Website
 
-A one-page website for **Cely Precast Greener Blocks**, an early-stage startup making precast blocks with a much lower carbon footprint than conventional concrete blocks.
+A one-page website for **CelyMary Greener Precast Blocks**, an early-stage startup making precast blocks with a much lower carbon footprint than conventional concrete blocks.
 
 The site gives architects, engineers, builders, real estate developers, investors and collaboration partners one place to see what the company offers and to get in touch.
 

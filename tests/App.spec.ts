@@ -7,7 +7,7 @@ describe('App', () => {
   it('shows the hero section first, then "Our solution"', () => {
     const wrapper = mount(App)
 
-    expect(wrapper.get('h1').text()).toBe('Cely Precast Greener Blocks')
+    expect(wrapper.get('h1').text()).toBe('CelyMary Greener Precast Blocks')
     expect(wrapper.get('h2').text()).toBe('Our solution')
     expect(wrapper.html().indexOf('<h1')).toBeLessThan(wrapper.html().indexOf('<h2'))
   })
