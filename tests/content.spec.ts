@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import App from '@/App.vue'
 import { audiences } from '@/content/audiences'
+import { contact } from '@/content/contact'
 import { hero } from '@/content/hero'
 import { products } from '@/content/products'
 import { roadmap } from '@/content/roadmap'
@@ -30,6 +31,16 @@ const allTexts = [
   ]),
   team.heading,
   ...team.members.flatMap((member) => [member.name, member.role, member.bio]),
+  contact.heading,
+  ...Object.values(contact.labels),
+  ...contact.visitorTypes,
+  contact.visitorTypePrompt,
+  contact.productPrompt,
+  contact.submitLabel,
+  contact.unavailableMessage,
+  contact.directContactPrefix,
+  ...Object.values(contact.errors),
+  ...Object.values(contact.email),
 ]
 
 describe('site content', () => {
@@ -116,6 +127,10 @@ describe('site content', () => {
       ]) {
         expect(new Set(values).size).toBe(values.length)
       }
+    })
+
+    it('has unique contact form visitor types (they are used as list keys)', () => {
+      expect(new Set(contact.visitorTypes).size).toBe(contact.visitorTypes.length)
     })
 
     it('marks exactly one roadmap step as the current stage', () => {

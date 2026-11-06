@@ -6,7 +6,9 @@
 import { describe, expectTypeOf, it } from 'vitest'
 
 import type { Audience } from '@/content/audiences'
+import { contact } from '@/content/contact'
 import { hero, type HeroAction, type HeroContent } from '@/content/hero'
+import type { ContactFormErrors, ContactFormValues } from '@/utils/contactForm'
 import { products, type Product } from '@/content/products'
 import type { RoadmapContent, RoadmapStep } from '@/content/roadmap'
 import { team, type TeamMember } from '@/content/team'
@@ -99,6 +101,27 @@ describe('content types: expected errors', () => {
     const member: TeamMember = { name: 'Test name', role: 'Test role' }
 
     expectTypeOf(member).toEqualTypeOf<TeamMember>()
+  })
+
+  it('rejects contact form values without a message', () => {
+    // @ts-expect-error: message is required
+    const values: ContactFormValues = { name: '', email: '', visitorType: '', product: '' }
+
+    expectTypeOf(values).toEqualTypeOf<ContactFormValues>()
+  })
+
+  it('rejects an error for a field that is not required', () => {
+    // @ts-expect-error: product is optional, so it never has an error
+    const errors: ContactFormErrors = { product: 'Test error.' }
+
+    expectTypeOf(errors).toEqualTypeOf<ContactFormErrors>()
+  })
+
+  it('does not allow adding visitor types from code at runtime', () => {
+    // @ts-expect-error: visitorTypes is read-only
+    contact.visitorTypes.push('Test')
+
+    expectTypeOf(contact.visitorTypes).toEqualTypeOf<readonly string[]>()
   })
 
   it('does not allow adding team members from code at runtime', () => {
